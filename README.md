@@ -5,28 +5,9 @@ This repo contains a docker-compose.yml that allow to run Projeqtor V8.0.5 with 
 
 To run Projeqtor + postgres + pgadmin :
 
-- Create a `.env` file where you downloaded the docker-compose file like this one
-```
-POSTGRES_DB=projeqtor
-POSTGRES_USER=projeqtor
-POSTGRES_PASSWORD=projeqtor
-PG_DATA=/data/postgres
-POSTGRES_PORT=5432
-POSTGRES_VERSION=latest
+- Edit a `.env` file where you downloaded the docker-compose file like the one on this repo
 
-PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
-PGADMIN_DEFAULT_PASSWORD=admin
-PGADMIN_LISTEN_PORT=443
-PGADMIN_PORT=6543
-
-LDAP_HOST=192.168.0.46
-
-PROJEQTOR_PORT=8080
-PROJEQTOR_LOG_PATH=/var/log/projeqtor
-PROJEQTOR_CONFIG_PATH=/etc/projeqtor
-
-```
-- Then run the command
+- Run the command
 
 ```
 docker-compose up -d --build
@@ -62,7 +43,11 @@ docker run -d
 mawsfr/projeqtor:latest
 ```
 
+## Docker Hub
+https://hub.docker.com/r/mawsfr/projeqtor
+
+## Questions and Suggestions
+Feel free to open issues to ask questions or make suggestions ;)
+
 ## Projeqtor configuration example
 ![projeqtor config example](img/projeqtor.png?raw=true "Configuration example")
-
-
