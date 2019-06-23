@@ -1,5 +1,11 @@
 FROM php:7.2-apache
 
+ARG PROJEQTOR_LOG_PATH="${PROJEQTOR_LOG_PATH}"
+ARG PROJEQTOR_CONFIG_PATH="${PROJEQTOR_CONFIG_PATH}"
+
+ENV PROJEQTOR_LOG_PATH="${PROJEQTOR_LOG_PATH}"
+ENV PROJEQTOR_CONFIG_PATH="${PROJEQTOR_CONFIG_PATH}"
+
 RUN apt-get update -yqq && \
     apt-get install -yqq --no-install-recommends \
     apt-utils \
@@ -29,11 +35,9 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
 ADD ./php/php.ini /usr/local/etc/php/php.ini
 COPY ./app/projeqtor /var/www/html/
 
-
-
-RUN mkdir -p /etc/projeqtor
-RUN mkdir -p /var/log/projeqtor
+RUN mkdir -p ${PROJEQTOR_LOG_PATH}
+RUN mkdir -p ${PROJEQTOR_CONFIG_PATH}
 
 RUN chown -R www-data:www-data /var/www/html/
-RUN chown -R www-data:www-data /etc/projeqtor
-RUN chown -R www-data:www-data /var/log/projeqtor
+RUN chown -R www-data:www-data ${PROJEQTOR_CONFIG_PATH}
+RUN chown -R www-data:www-data ${PROJEQTOR_LOG_PATH}
