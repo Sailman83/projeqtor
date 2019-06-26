@@ -23,7 +23,7 @@ Here are possible (useless ?) build args
 ## Docker-compose
 Here is what is run when using docker-compose
 - Projeqtor : 
-    - http://127.0.0.1:8080
+    - http://127.0.0.1:8080/projeqtor
     - Service name : projeqtor
 - Postgres : 
     - http://127.0.0.1:5432
