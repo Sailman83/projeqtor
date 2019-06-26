@@ -33,7 +33,10 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
     docker-php-ext-install -j$(nproc) imap
 
 ADD ./php/php.ini /usr/local/etc/php/php.ini
-COPY ./app/projeqtor /var/www/html/
+ADD ./apache/apache2.conf /etc/apache2/apache2.conf
+ADD ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+COPY ./app/projeqtor /var/www/html/projeqtor/
 
 RUN mkdir -p ${PROJEQTOR_LOG_PATH}
 RUN mkdir -p ${PROJEQTOR_CONFIG_PATH}
