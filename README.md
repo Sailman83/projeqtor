@@ -35,11 +35,11 @@ Here is what is run when using docker-compose
 ## Run from docker-hub
 If you already have a running postgres instance, just run Projeqtor by executing the command
 ```bash
-docker run -d 
-    --net <POSTGRES_NETWORK> 
-    --link <POSTGRES_CONTAINER_NAME>:db 
-    -p 8080:80 
-    --name projeqtor805 
+docker run -d \
+    --net <POSTGRES_NETWORK> \
+    --link <POSTGRES_CONTAINER_NAME>:db \
+    -p 8080:80 \
+    --name projeqtor805 \
 mawsfr/projeqtor:latest
 ```
 
