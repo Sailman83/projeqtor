@@ -17,8 +17,8 @@ RUN apt-get install -y \
         libzip-dev \
         zip \
   && docker-php-ext-install zip
-RUN docker-php-ext-configure gd --with-gd --with-webp-dir --with-jpeg-dir \
-    --with-png-dir --with-zlib-dir --with-xpm-dir --with-freetype-dir \
+RUN docker-php-ext-configure gd --with-gd --with-webp --with-jpeg \
+    --with-png --with-zlib --with-xpm --with-freetype \
     --enable-gd-native-ttf
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install pdo_mysql pdo_pgsql
