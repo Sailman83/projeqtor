@@ -32,8 +32,10 @@ ADD ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mkdir -p /parameter
 RUN mkdir -p /log
 RUN mkdir -p /report
+RUN mkdir -p /attachment
 
 RUN chown -R www-data:www-data /var/www/html/
 RUN chown -R www-data:www-data /log
 RUN chown -R www-data:www-data /report
 RUN chown -R www-data:www-data /parameter
+RUN chown -R www-data:www-data /attachment
