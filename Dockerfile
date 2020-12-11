@@ -1,10 +1,4 @@
-FROM php:7.2-apache
-
-ARG PROJEQTOR_LOG_PATH="${PROJEQTOR_LOG_PATH}"
-ARG PROJEQTOR_CONFIG_PATH="${PROJEQTOR_CONFIG_PATH}"
-
-ENV PROJEQTOR_LOG_PATH="${PROJEQTOR_LOG_PATH}"
-ENV PROJEQTOR_CONFIG_PATH="${PROJEQTOR_CONFIG_PATH}"
+FROM php:7.4.13-apache
 
 RUN apt-get update -yqq && \
     apt-get install -yqq --no-install-recommends \
@@ -35,9 +29,11 @@ ADD ./php/php.ini /usr/local/etc/php/php.ini
 ADD ./apache/apache2.conf /etc/apache2/apache2.conf
 ADD ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN mkdir -p ${PROJEQTOR_LOG_PATH}
-RUN mkdir -p ${PROJEQTOR_CONFIG_PATH}
+RUN mkdir -p /parameter
+RUN mkdir -p /log
+RUN mkdir -p /report
 
 RUN chown -R www-data:www-data /var/www/html/
-RUN chown -R www-data:www-data ${PROJEQTOR_CONFIG_PATH}
-RUN chown -R www-data:www-data ${PROJEQTOR_LOG_PATH}
+RUN chown -R www-data:www-data /log
+RUN chown -R www-data:www-data /report
+RUN chown -R www-data:www-data /parameter
