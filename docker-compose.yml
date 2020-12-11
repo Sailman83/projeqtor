@@ -1,55 +1,28 @@
-version: '3.2'
+version: '3.5'
 services:
   db:
     container_name: projeqtor-postgresql
-    image: "postgres:${POSTGRES_VERSION}"
+    image: postgres
     volumes:
       - db-data:/data/postgres
     ports:
       - "${POSTGRES_PORT}:5432"
     restart: unless-stopped
     environment:
-      - POSTGRES_DB=projeqtor
-      - POSTGRES_USER=${POSTGRES_USER:-projeqtor}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-projeqtor}
-      - PG_DATA=${PG_DATA:-/data/postgres}
-      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
-      - POSTGRES_VERSION=${POSTGRES_VERSION:-latest}
+      - POSTGRES_DB: 'projeqtor'
+      - POSTGRES_USER: 'projeqtor'
+      - POSTGRES_PASSWORD: 'projeqtor'
+      - PG_DATA: '/data/postgres'
+      - POSTGRES_PORT: '5432'
+      - POSTGRES_VERSION: 'latest'
   
   projeqtor:
-    image: mawsfr/projeqtor
+    image: sailman/projeqtor
     build:
       dockerfile: "./docker/.Dockerfile"
-      context: .
-      args:
-        - PROJEQTOR_LOG_PATH=${PROJEQTOR_LOG_PATH}
-        - PROJEQTOR_CONFIG_PATH=${PROJEQTOR_CONFIG_PATH}
-
     container_name: projeqtor
-    extra_hosts:
-      - "ldapapp:${LDAP_HOST}"
-    ports:
-        - "${PROJEQTOR_PORT:-8080}:80"
     volumes:
       - "./php/php.ini:/usr/local/etc/php/php.ini:ro"
       - "./log/projeqtor:${PROJEQTOR_LOG_PATH}:rw"
       - "./app/config:${PROJEQTOR_CONFIG_PATH}:rw"
-    environment: 
-      - PROJEQTOR_LOG_PATH=${PROJEQTOR_LOG_PATH:-/var/log/projeqtor}
-      - PROJEQTOR_CONFIG_PATH=${PROJEQTOR_CONFIG_PATH:-/etc/projeqtor}
-      
-        
-  pgadmin:
-    container_name: "projeqtor-admin"
-    image: "dpage/pgadmin4"
-    ports:
-      - "${PGADMIN_PORT}:${PGADMIN_LISTEN_PORT}"
-    links: 
-      - db
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@pgadmin.com}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-admin}
-      - PGADMIN_LISTEN_PORT=${PGADMIN_LISTEN_PORT:-443}
-      - PGADMIN_PORT=${PGADMIN_PORT:-6543}
-volumes:
-  db-data:
+  
