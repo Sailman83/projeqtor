@@ -44,15 +44,15 @@ mawsfr/projeqtor:latest
 https://hub.docker.com/r/sailman83/projeqtor
 
 ## Projeqtor configuration example
-Database type : mysql
-Database host: 'non du container DB'
-Database user to connect :
-Database password for user :
-Database schema name :
-...
-Directory to store Attachments : /attachment
-Temp directory for reports : /report
-Log file name : /log/projeqtor_${date}.log
-Parameter file name : /parameter/parameters.php
+- Database type : mysql
+- Database host: 'non du container DB'
+- Database user to connect :
+- Database password for user :
+- Database schema name :
+- ...
+- Directory to store Attachments : /attachment
+- Temp directory for reports : /report
+- Log file name : /log/projeqtor_${date}.log
+- Parameter file name : /parameter/parameters.php
 
 Fork from MawsFr/projeqtor
