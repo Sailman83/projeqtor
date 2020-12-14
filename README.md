@@ -1,33 +1,14 @@
 # Dockerized Projector with PHP 7.4.13
-This repo contains a docker-compose.yml that allow to run Projeqtor V8.0.5 with a Postgres and PgAdmin.
-
-## Build and run with docker-compose 
-
-To run Projeqtor + postgres + pgadmin :
-
-- Edit a `.env` file where you downloaded the docker-compose file like the one on this repo
-
-- Run the command
-
-```
-docker-compose up -d --build
-```
-
-Here are possible (useless ?) build args 
-
-```
---build-arg PROJEQTOR_LOG_PATH=/var/log/projeqtor
---build-arg PROJEQTOR_CONFIG_PATH=/etc/projeqtor
-```
+This repo contains a docker-compose.yml that allow to run Projeqtor
 
 ## Docker-compose
+
 Here is what is run when using docker-compose
 - Projeqtor : 
     - http://127.0.0.1:8080/
     - Service name : projeqtor
 
 ## Run from docker-hub
-### Line
 If you already have a running postgres instance, just run Projeqtor by executing the command
 ```bash
 docker run -d \
@@ -37,8 +18,6 @@ docker run -d \
     --name projeqtor805 \
 mawsfr/projeqtor:latest
 ```
-
-### Docker-compose
 
 ## Docker Hub
 https://hub.docker.com/r/sailman83/projeqtor
