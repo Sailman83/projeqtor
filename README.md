@@ -1,4 +1,4 @@
-# Dockerized Projector 8.0.5 with LDAP support
+# Dockerized Projector with PHP 7.4.13
 This repo contains a docker-compose.yml that allow to run Projeqtor V8.0.5 with a Postgres and PgAdmin.
 
 ## Build and run with docker-compose 
