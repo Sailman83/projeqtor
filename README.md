@@ -23,16 +23,11 @@ Here are possible (useless ?) build args
 ## Docker-compose
 Here is what is run when using docker-compose
 - Projeqtor : 
-    - http://127.0.0.1:8080/projeqtor
+    - http://127.0.0.1:8080/
     - Service name : projeqtor
-- Postgres : 
-    - http://127.0.0.1:5432
-    - Service name : db
-- PgAdmin : 
-    - http://127.0.0.1:6543
-    - Service name : pgadmin
 
 ## Run from docker-hub
+### Line
 If you already have a running postgres instance, just run Projeqtor by executing the command
 ```bash
 docker run -d \
@@ -43,11 +38,21 @@ docker run -d \
 mawsfr/projeqtor:latest
 ```
 
-## Docker Hub
-https://hub.docker.com/r/mawsfr/projeqtor
+### Docker-compose
 
-## Questions and Suggestions
-Feel free to open issues to ask questions or make suggestions ;)
+## Docker Hub
+https://hub.docker.com/r/sailman83/projeqtor
 
 ## Projeqtor configuration example
-![projeqtor config example](img/projeqtor.png?raw=true "Configuration example")
+Database type : mysql
+Database host: 'non du container DB'
+Database user to connect :
+Database password for user :
+Database schema name :
+...
+Directory to store Attachments : /attachment
+Temp directory for reports : /report
+Log file name : /log/projeqtor_${date}.log
+Parameter file name : /parameter/parameters.php
+
+Fork from MawsFr/projeqtor
